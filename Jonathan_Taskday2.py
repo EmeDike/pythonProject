@@ -1,13 +1,14 @@
-def list_with_additional_number(my_list):
-    carry = 1
+def list_with_additional_number(input_list):
+    remainder = 1
     result = []
 
-    for num in reversed(my_list):
-        current_sum = num + carry
-        result.insert(0, current_sum % 10)
-        carry = current_sum // 10
+    for num in reversed(input_list):
+        current_sum = num + remainder
+        result.append(current_sum % 10)
+        remainder = current_sum // 10
 
-    if carry:
-        result.insert(0, carry)
+    while remainder > 0:
+        result.append(remainder % 10)
+        remainder //= 10
 
-    return result
+    return result[::-1]
